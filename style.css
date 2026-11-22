@@ -1,0 +1,291 @@
+:root {
+  --bg: #101014;
+  --surface: #18181c;
+  --surface-hover: #202027;
+  --text: #f5f5f7;
+  --muted: #9a9aa2;
+  --accent: #0074e4;
+  --accent-soft: rgba(0, 116, 228, 0.16);
+  --border: rgba(255, 255, 255, 0.08);
+  --radius: 22px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+/* Barre du haut */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 20px 6vw;
+  background: rgba(16, 16, 20, 0.75);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  display: inline-block;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.logo:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 60px 6vw 70px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+}
+
+h1 span {
+  color: var(--muted);
+}
+
+.subtitle {
+  max-width: 560px;
+  margin: 24px auto 0;
+  color: var(--muted);
+  font-size: 1.15rem;
+}
+
+/* Catégories */
+.categories {
+  text-align: center;
+  padding: 20px 6vw 110px;
+}
+
+.categories h2 {
+  font-size: 1.8rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+}
+
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.category-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 26px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: transform 0.2s ease,
+              background 0.2s ease,
+              border-color 0.2s ease;
+}
+
+.category-btn:hover {
+  transform: translateY(-3px);
+  background: var(--surface-hover);
+  border-color: rgba(0, 116, 228, 0.45);
+}
+
+.category-btn .emoji {
+  font-size: 1.2rem;
+}
+
+/* Cartes cadeaux */
+.ideas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.idea-card {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.idea-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 116, 228, 0.45);
+}
+
+.idea-image {
+  display: block;
+  width: 100%;
+  flex: 1;
+  overflow: hidden;
+  background: var(--surface-hover);
+}
+
+.idea-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.idea-info {
+  padding: 16px 18px 20px;
+  text-align: center;
+}
+
+.idea-info h3 {
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.price {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Carte cadeau toujours carrée */
+.idea-card {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) 96px;
+
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  aspect-ratio: 1 / 1;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* Zone cliquable contenant la photo */
+.idea-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 10px;
+
+  aspect-ratio: auto;
+  overflow: hidden;
+  background: var(--surface-hover);
+}
+
+/* Photo entière, centrée, sans déformation */
+.idea-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Nom et prix sous la photo */
+.idea-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+
+  min-width: 0;
+  padding: 12px 16px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Adaptation mobile */
+@media (max-width: 768px) {
+  .hero {
+    padding: 40px 6vw 50px;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    letter-spacing: -0.03em;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .category-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category-btn {
+    width: 100%;
+    max-width: 360px;
+    justify-content: center;
+  }
+
+  .ideas {
+    padding: 0 18px 60px;
+  }
+
+  .idea-card {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+  }
+
+  .idea-image {
+    height: 220px;
+  }
+}
+
