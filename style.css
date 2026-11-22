@@ -249,43 +249,64 @@ h1 span {
 }
 
 /* Adaptation mobile */
-@media (max-width: 768px) {
-  .hero {
-    padding: 40px 6vw 50px;
-  }
-
-  h1 {
-    font-size: 2.4rem;
-    letter-spacing: -0.03em;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-  }
-
-  .category-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .category-btn {
-    width: 100%;
-    max-width: 360px;
-    justify-content: center;
-  }
-
+/* TÉLÉPHONE : 2 cadeaux carrés par ligne */
+@media (max-width: 600px) {
   .ideas {
-    padding: 0 18px 60px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+
+    width: 100%;
+    padding: 0 12px 60px;
   }
 
   .idea-card {
     width: 100%;
-    max-width: 360px;
+    min-width: 0;
+    max-width: none;
     height: auto;
+    aspect-ratio: 1 / 1;
+
+    /* Plus de place pour la photo sur les petites cartes */
+    grid-template-rows: minmax(0, 1fr) 72px;
+    border-radius: 16px;
   }
 
   .idea-image {
-    height: 220px;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    padding: 6px;
+  }
+
+  .idea-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .idea-info {
+    padding: 6px 8px;
+    gap: 4px;
+  }
+
+  .idea-info h3 {
+    font-size: 0.8rem;
+    line-height: 1.2;
+    margin: 0;
+
+    /* Deux lignes maximum pour les noms longs */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+  }
+
+  .price {
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 1.2;
   }
 }
-
